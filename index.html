@@ -1245,7 +1245,25 @@ omit = *migrations*,*.virtualenvs*</code></pre>
 <p class="last">除外対象を .coveragercに書くと良い</p>
 </section>
 <section>
-<ul class="first last simple">
+<pre class="first">
+<code data-trim contenteditable>Name                                     Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------
+apps/__init__                                0      0   100%
+apps/account/__init__                        0      0   100%
+apps/account/api                            68     56    18%   23, 31-84, 91-111, 120-129, 133-141
+apps/account/forms                          11      0   100%
+apps/account/models                         63     20    68%   94, 100-102, 108-113, 118-127
+apps/account/urls                            5      0   100%
+apps/account/validators                      5      0   100%
+apps/account/views                         128     67    48%   38-65, 70-96, 107-114, 123-124, 129, 142-143, 146-149, 152, 155, 17
+apps/comment/__init__                        0      0   100%
+apps/comment/admin                           3      0   100%
+apps/comment/api                            18     11    39%   15, 26-28, 34-40
+apps/comment/cache                           5      2    60%   8, 16
+apps/comment/forms                           5      0   100%
+apps/comment/models                         28      7    75%   15-16, 35, 38-41, 53
+apps/comment/sitemaps                       26     12    54%   35-38, 41, 47-62</code></pre>
+<ul class="last simple">
 <li>起動時で自動でロードされるもの</li>
 <li>操作した分動作したもの</li>
 <li>これらはカバレッジに反映される</li>

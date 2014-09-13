@@ -1331,7 +1331,7 @@
 .. revealjs:: 
  :noheading:
 
- .. rv_code
+ .. rv_code::
 
    Name                                     Stmts   Miss  Cover   Missing
    ----------------------------------------------------------------------
