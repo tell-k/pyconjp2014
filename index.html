@@ -1,1 +1,1365 @@
-My GitHub Page
+<!DOCTYPE html>
+
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>リファクタリングツールあれこれ &mdash; pyconjp2014 1 documentation</title>
+
+    
+
+    
+<link rel="stylesheet" href="_static/css/reveal.min.css">
+<link rel="stylesheet" href="_static/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="_static/lib/css/zenburn.css">
+<link rel="stylesheet" href="_static/revealjs.css" type="text/css" />
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if(window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = '_static/css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="_static/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+  <div class="section" id="id1">
+<h1>リファクタリングツールあれこれ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<section>
+<h2>リファクタリングツールあれこれ</h2>
+<h5>〜 May the force be with you 〜</h5>
+<small class="first last">
+PyCon JP 2014.</small>
+</section>
+<section>
+<h2>資料</h2>
+TODO</section>
+<section>
+<h2>誰だお前は</h2>
+<a class="first reference internal image-reference" href="_images/tell-k.png"><img alt="_images/tell-k.png" src="_images/tell-k.png" style="width: 200px;" /></a>
+<div class="last"><ul>
+<li class="fragment">名前: tell-k</li>
+<li class="fragment">所属: <a href="http://www.beproud.jp/">beproud.inc</a></li>
+<li class="fragment">Twitter: <a href="https://twitter.com/tell_k">@tell_k</a></li>
+<li class="fragment">Github: <a href="https://github.com/tell-k">https://github.com/tell-k</a></li>
+<li class="fragment">特茶が大好き</li>
+</ul></div></section>
+<section>
+<h2>動機</h2>
+<div class="first last"><ol>
+<li class="fragment">普段からpythonを書いてる</li>
+<li class="fragment">コードを書く時に気をつけてる事がある</li>
+<li class="fragment">その時に使ってるツールが結構ある</li>
+<li class="fragment">一度まとめてみたかった</li>
+</ol></div></section>
+<section data-background="http://dl.dropbox.com/u/540566/Screenshots/_0~vb9q2y~4l.png">
+<div class="first last"><div style="font-size:35px; padding:30px 10px 10px 10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+<h3 style="color:white;line-height:60px;">
+リファクタリングの話はしない。<br />これからもするつもりはない。<br />いいね？
+</h3>
+</div></div></section>
+<section>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/maln8-0saby2.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/maln8-0saby2.png" />
+</section>
+<section>
+<h2>対象者</h2>
+<div class="first last"><ol>
+<li class="fragment">プログラム初心者</li>
+<li class="fragment">Python入門したて</li>
+<li class="fragment">楽にコード書きたい</li>
+<li class="fragment">先輩の細かいコードレビューに嫌気がさしてきた</li>
+</ol></div></section>
+<section>
+<h2>当該発表者</h2>
+<div class="first last"><ul>
+<li class="fragment">中途半端なVimmer</li>
+<li class="fragment">他のエディタ事情に疎い</li>
+</ul></div></section>
+<section data-background="http://blog-imgs-70.fc2.com/2/c/h/2chrising/entry_img_275.jpg">
+<div class="first last"><div style="font-size:35px; padding:10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+<h2 style="color:white;line-height:70px;">我が世には<br />Vim以外存在しない</h2>
+</div></div></section>
+<section>
+<h2>目次</h2>
+<div class="first last"><ol>
+<li class="fragment">コーディングスタイルを知る</li>
+<li class="fragment">自動整形に任せる</li>
+<li class="fragment">自動補完で楽する</li>
+<li class="fragment">リファクタリングツールを使う</li>
+<li class="fragment">コードメトリクスを見る</li>
+<li class="fragment">デッドコードを探す</li>
+<li class="fragment">まとめ</li>
+</ol></div></section>
+<section>
+<h2>1. コーディングスタイルを知る</h2>
+</section>
+<section>
+<ul class="first last simple">
+<li>PEP8 &#8211; Style Guide for Python Code</li>
+<li>PEP257 &#8211; Docstring Conventions</li>
+<li>Pythonコミュニティが推奨するスタイルが存在する</li>
+</ul>
+</section>
+<section>
+<h2>PEP 8 -- Style Guide for Python Code</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/52ya4pswctfy.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/52ya4pswctfy.png" />
+<p class="last">via <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">http://legacy.python.org/dev/peps/pep-0008/</a></p>
+</section>
+<section>
+<ul class="first last simple">
+<li>インデントはスペース4</li>
+<li>行の長さ最大79文字</li>
+<li>import分の順序</li>
+<li>命名スタイル</li>
+<li>etc ..</li>
+</ul>
+</section>
+<section>
+<h2>PEP 257 -- Docstring Conventions</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/dfh_-vk-nh3c.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/dfh_-vk-nh3c.png" />
+<p class="last">via <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0257/">http://legacy.python.org/dev/peps/pep-0257/</a></p>
+</section>
+<section>
+<h2>ツールでチェック</h2>
+<ul class="first last simple">
+<li>pep8 ... pepe8のチェック</li>
+<li>pep257 ... pep257のチェック</li>
+<li>pyflakes ... 文法エラーなどをチェック</li>
+<li>flake8 ... pep8 + pyflakes</li>
+</ul>
+</section>
+<section>
+<h2>pep8</h2>
+<ul class="first last simple">
+<li>PEPの名前そのままのライブラリ</li>
+<li>PEP8として準拠してくれるかチェックしてくれる</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pep8">https://pypi.python.org/pypi/pep8</a></li>
+</ul>
+</section>
+<section>
+<ul class="first simple">
+<li>例えばこんなコード</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>import math, sys;
+
+def example1():
+    ####This is a long comment. This should be wrapped to fit within 72 characters.
+    some_tuple=(   1,2, 3,'a'  );
+    some_variable={'long':'Long code lines should be wrapped within 79 characters.',
+    'other':[math.pi, 100,200,300,9876543210,'This is a long string that goes on'],
+    'more':{'inner':'This whole logical line should be wrapped.',some_tuple:[1,
+    20,300,40000,500000000,60000000000000000]}}
+    return (some_tuple, some_variable)
+def example2(): return {'has_key() is deprecated':True}.has_key({'f':2}.has_key(''));
+class Example3(   object ):
+    def __init__    ( self, bar ):
+     #Comments should have a space after the hash.
+     if bar : bar+=1;  bar=bar* bar   ; return bar
+     else:
+                    some_string = """
+                       Indentation in multiline strings should not be touched.
+Only actual code should be reindented.
+"""
+                 return (sys.path, some_string)</code></pre>
+</section>
+<section>
+<ul class="first simple">
+<li>警告メッセージが表示</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>(pyconjp2014)$ pep8 example1.py
+example1.py:1:12: E401 multiple imports on one line
+example1.py:1:17: E703 statement ends with a semicolon
+example1.py:3:1: E302 expected 2 blank lines, found 1
+example1.py:4:5: E265 block comment should start with '# '
+example1.py:4:80: E501 line too long (83 > 79 characters)
+example1.py:5:15: E225 missing whitespace around operator
+example1.py:5:17: E201 whitespace after '('
+example1.py:5:21: E231 missing whitespace after ','
+example1.py:5:26: E231 missing whitespace after ','
+example1.py:5:31: E202 whitespace before ')'
+example1.py:5:33: E703 statement ends with a semicolon
+example1.py:6:18: E225 missing whitespace around operator
+example1.py:6:26: E231 missing whitespace after ':'
+example1.py:6:80: E501 line too long (84 > 79 characters)
+example1.py:7:5: E128 continuation line under-indented for visual indent</code></pre>
+</section>
+<section>
+<h2>pep257</h2>
+<ul class="first last simple">
+<li>これもPEP名そのまま</li>
+<li>PEP257として準拠してくれるかチェックしてくれる</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pep257">https://pypi.python.org/pypi/pep257</a></li>
+</ul>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>"""   Here are some examples.
+
+    This module docstring should be dedented."""
+
+def launch_rocket():
+    """Launch
+the
+rocket. Go colonize space."""
+
+
+def factorial(x):
+    '''
+
+    Return x factorial.
+
+    This uses math.factorial.
+
+    '''
+    import math
+    return math.factorial(x)
+
+
+def print_factorial(x):
+    """Print x factorial"""
+    print(factorial(x))
+
+
+def main():
+    """Main
+    function"""
+    print_factorial(5)
+    if factorial(10):
+        launch_rocket()</code></pre>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>(pyconjp2014) $ pep257 example2.py
+example2.py:1 at module level:
+        D209: Put multi-line docstring closing quotes on separate line
+example2.py:1 at module level:
+        D208: Docstring is over-indented
+example2.py:5 in public function `launch_rocket`:
+        D209: Put multi-line docstring closing quotes on separate line
+example2.py:5 in public function `launch_rocket`:
+        D400: First line should end with '.', not 'h'
+example2.py:5 in public function `launch_rocket`:
+        D205: Blank line missing between one-line summary and description
+example2.py:5 in public function `launch_rocket`:
+        D207: Docstring is under-indented
+example2.py:11 in public function `factorial`:
+        D300: Expected """-quotes, got '''-quotes
+example2.py:23 in public function `print_factorial`:
+        D400: First line should end with '.', not 'l'
+example2.py:28 in public function `main`:
+        D209: Put multi-line docstring closing quotes on separate line
+example2.py:28 in public function `main`:
+        D400: First line should end with '.', not 'n'
+example2.py:28 in public function `main`:
+            D205: Blank line missing between one-line summary and description</code></pre>
+</section>
+<section>
+<h2>pyflakes</h2>
+<ul class="first last simple">
+<li>文法エラー/未定義の変数・関数の使用等をチェック</li>
+<li>コーディングスタイルのチェックではない</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pyflakes">https://pypi.python.org/pypi/pyflakes</a></li>
+</ul>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>import math
+import re
+import os
+import random
+import multiprocessing
+import grp, pwd, platform
+import subprocess, sys
+
+
+def foo():
+    from abc import ABCMeta, WeakSet
+    try:
+        import multiprocessing
+        print(multiprocessing.cpu_count())
+    except ImportError as exception:
+        print(sys.version)
+    return math.pi</code></pre>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>example3.py:2: 're' imported but unused
+example3.py:3: 'os' imported but unused
+example3.py:4: 'random' imported but unused
+example3.py:5: 'multiprocessing' imported but unused
+example3.py:6: 'grp' imported but unused
+example3.py:6: 'platform' imported but unused
+example3.py:6: 'pwd' imported but unused
+example3.py:7: 'subprocess' imported but unused
+example3.py:11: 'ABCMeta' imported but unused
+example3.py:11: 'WeakSet' imported but unused
+example3.py:13: redefinition of unused 'multiprocessing' from line 5
+example3.py:15: local variable 'exception' is assigned to but never used</code></pre>
+</section>
+<section>
+<h2>全ての警告に対処すれば...</h2>
+<ul class="first last simple">
+<li>スタイルに準拠しつつ無駄な記述を排除できる。</li>
+<li>３つのツールをバラバラに使うのは。。</li>
+</ul>
+</section>
+<section data-background="http://dl.dropbox.com/u/540566/Screenshots/mrlb6sebeopl.png">
+<div class="first last"><div style="font-size:35px; padding:30px 10px 10px 10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+  <h3 style="color:white;line-height:60px;">
+  ぶっちゃけ面倒<br />いままで紹介したツールは一旦全て忘れてください
+  </h3>
+</div></div></section>
+<section>
+<h2>flake8</h2>
+<ul class="first last simple">
+<li>pep8 + pyflakes</li>
+<li>これ一つで大概のチェックが可能</li>
+<li>拡張機能あり</li>
+<li>循環的複雑度とか指定可能</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/flake8">https://pypi.python.org/pypi/flake8</a></li>
+</ul>
+</section>
+<section>
+<h2>某社レビューガイドラインのファーストステップ</h2>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png" src="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png" style="width: 150%;" /></a>
+<p class="last">訳) 最低flake8に通してからレビューに出そうや。な?</p>
+</section>
+<section>
+<h2>はい</h2>
+</section>
+<section>
+<h2>flake8のメッセージ体系</h2>
+<ul class="first last simple">
+<li>E***/W***  pep8 のメッセージ</li>
+<li>F***: pyflakes のメッセージ</li>
+<li>C9**: McCabe complexity pluginのメッセージ</li>
+<li>N8**: pep8-naming plugin のメッセージ</li>
+<li><a class="reference external" href="http://flake8.readthedocs.org/en/latest/warnings.html">http://flake8.readthedocs.org/en/latest/warnings.html</a></li>
+</ul>
+</section>
+<section>
+<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png" src="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png" /></a>
+</section>
+<section>
+<h2>flake8のTips</h2>
+<ul class="first last simple">
+<li>setup.cfgでカスタマイズ</li>
+<li>どうしても無視したいヤツがいる</li>
+<li>VCS Hookを使う</li>
+<li>拡張を使う</li>
+</ul>
+</section>
+<section>
+<h2>setup.cfgでカスタマイズ</h2>
+<ul class="first last simple">
+<li>チェック内容をカスタマイズ</li>
+<li>1行の最大長を120にしたい</li>
+<li>特定の個所だけチェック除外したい</li>
+<li>プロジェクトのルートにsetup.cfgを用意</li>
+</ul>
+</section>
+<section>
+<pre class="first">
+<code data-trim contenteditable>[flake8]
+max-line-length = 120
+exclude = /apps/*/migrations/*</code></pre>
+<ul class="last simple">
+<li><a class="reference external" href="http://flake8.readthedocs.org/en/latest/config.html">http://flake8.readthedocs.org/en/latest/config.html</a></li>
+</ul>
+</section>
+<section>
+<h2>どうしても無視したい</h2>
+<ul class="first last simple">
+<li>やむ得ない事情で無視したい</li>
+<li>Djangoのsettingsのアスタリスクインポート</li>
+</ul>
+</section>
+<section>
+<pre class="first">
+<code data-trim contenteditable>from settings.base import *  # NOQA</code></pre>
+<ul class="last simple">
+<li># NOQAとコメントを書けばいい</li>
+<li>やむ得ない場合ですよ。やむ得ない。</li>
+</ul>
+</section>
+<section>
+<h2>VCS Hookを使う</h2>
+<p class="first">.hgがあるディレクトリで以下のコマンドを叩く</p>
+<pre>
+<code data-trim contenteditable>$ flake8 --install-hook</code></pre>
+<p>.hg/hgrcに勝手に追記してくれる</p>
+<pre class="last">
+<code data-trim contenteditable>[hooks]
+commit = python:flake8.hooks.hg_hook
+qrefresh = python:flake8.hooks.hg_hook
+
+[flake8]
+complexity = 10
+strict = False
+ignore = None
+lazy = False</code></pre>
+</section>
+<section>
+<h2>拡張を使う</h2>
+<ul class="first last simple">
+<li>pep257のチェックにも対応させたい</li>
+<li>flake8-docstringという拡張を使う</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/flake8-docstrings/0.1.0">https://pypi.python.org/pypi/flake8-docstrings/0.1.0</a></li>
+</ul>
+</section>
+<section>
+<pre class="first">
+<code data-trim contenteditable>$ pip install flake8_docstrings</code></pre>
+<p>やる事はこれだけ</p>
+<pre>
+<code data-trim contenteditable>$ flake8 example3.py
+example3.py:1:1: D100  Docstring missing
+example3.py:2:1: F401 're' imported but unused
+example3.py:3:1: F401 'os' imported but unused
+example3.py:4:1: F401 'random' imported but unused
+example3.py:5:1: F401 'multiprocessing' imported but unused
+example3.py:6:1: F401 'grp' imported but unused
+example3.py:6:1: F401 'platform' imported but unused
+example3.py:6:1: F401 'pwd' imported but unused
+example3.py:6:11: E401 multiple imports on one line
+example3.py:7:1: F401 'subprocess' imported but unused
+example3.py:7:18: E401 multiple imports on one line
+example3.py:10:1: D103  Docstring missing</code></pre>
+<p class="last">Dで始まるメッセージが表示されるようになる。</p>
+</section>
+<section>
+<h2>他には?</h2>
+<ul class="first last simple">
+<li>pep8-naming -&gt; クラス・変数などの命名規則のチェック</li>
+<li>flake8-todo -&gt; # TODO を拾ってくれる</li>
+</ul>
+</section>
+<section>
+<h2>コーディングスタイルについて</h2>
+<ul class="first last simple">
+<li>コミュニティ推奨のスタイルが存在する</li>
+<li>とりあえず始めるにはflake8がおすすめ</li>
+</ul>
+</section>
+<section>
+<h2>2. 自動整形に任せる</h2>
+<ul class="first last simple">
+<li>チェックツールは沢山ある</li>
+<li>ただし直すのは</li>
+</ul>
+</section>
+<section>
+<h2>THE 人の手</h2>
+</section>
+<section>
+<h2>辛い</h2>
+<ul class="first last simple">
+<li>golangにはgofmtていう便利なツールがあってだな。</li>
+</ul>
+</section>
+<section>
+<h2>Pythonでもあるよ</h2>
+<ul class="first last simple">
+<li>autopep8</li>
+<li>autoflake</li>
+<li>その他</li>
+</ul>
+</section>
+<section>
+<h2>autopep8</h2>
+<ul class="first last simple">
+<li>pep8に従って整形してくれる</li>
+<li>gofmtのような存在</li>
+<li>これだけでも大分楽になる</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/autopep8">https://pypi.python.org/pypi/autopep8</a></li>
+</ul>
+</section>
+<section>
+<p class="first">Before</p>
+<pre>
+<code data-trim contenteditable>import math, sys;
+
+def example1():
+    ####This is a long comment. This should be wrapped to fit within 72 characters.
+    some_tuple=(   1,2, 3,'a'  );
+    some_variable={'long':'Long code lines should be wrapped within 79 characters.',
+    'other':[math.pi, 100,200,300,9876543210,'This is a long string that goes on'],
+    'more':{'inner':'This whole logical line should be wrapped.',some_tuple:[1,
+    20,300,40000,500000000,60000000000000000]}}
+    return (some_tuple, some_variable)
+def example2(): return {'has_key() is deprecated':True}.has_key({'f':2}.has_key(''));
+class Example3(   object ):
+    def __init__    ( self, bar ):
+     #Comments should have a space after the hash.
+     if bar : bar+=1;  bar=bar* bar   ; return bar
+     else:
+                    some_string = """
+                       Indentation in multiline strings should not be touched.
+Only actual code should be reindented.
+"""
+                         return (sys.path, some_string)</code></pre>
+<p>コマンド</p>
+<pre class="last">
+<code data-trim contenteditable>$ autopep8 --in-place --aggressive --aggressive exmaple1.py</code></pre>
+</section>
+<section>
+<p class="first">After</p>
+<pre class="last">
+<code data-trim contenteditable>import math
+import sys
+
+def example1():
+    # This is a long comment. This should be wrapped to fit within 72
+    # characters.
+    some_tuple = (1, 2, 3, 'a')
+    some_variable = {
+        'long': 'Long code lines should be wrapped within 79 characters.',
+        'other': [
+            math.pi,
+            100,
+            200,
+            300,
+            9876543210,
+            'This is a long string that goes on'],
+        'more': {
+            'inner': 'This whole logical line should be wrapped.',
+            some_tuple: [
+                1,
+                20,
+                300,
+                40000,
+                500000000,
+                60000000000000000]}}
+    return (some_tuple, some_variable)
+
+
+def example2():
+    return ('' in {'f': 2}) in {'has_key() is deprecated': True}
+
+
+class Example3(object):
+
+    def __init__(self, bar):
+        # Comments should have a space after the hash.
+        if bar:
+            bar += 1
+            bar = bar * bar
+            return bar
+        else:
+            some_string = """
+                       Indentation in multiline strings should not be touched.
+Only actual code should be reindented.
+"""
+            return (sys.path, some_string)</code></pre>
+</section>
+<section>
+<h2>tips</h2>
+<ul class="first last simple">
+<li>特定のディレクトリ以下を一発置換</li>
+<li>&#8211;aggresiveを重ねるとアグレッシブになる</li>
+</ul>
+</section>
+<section>
+<h2>autoflake</h2>
+<ul class="first last simple">
+<li>pyflakesが出すようなメッセージに対応</li>
+<li>利用されてないimport文の削除</li>
+<li>利用されてない変数の削除</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/autoflake">https://pypi.python.org/pypi/autoflake</a></li>
+</ul>
+</section>
+<section>
+<p class="first">Before</p>
+<pre>
+<code data-trim contenteditable>import math
+import re
+import os
+import random
+import multiprocessing
+import grp, pwd, platform
+import subprocess, sys
+
+hoge = "hoge"
+
+def foo():
+    from abc import ABCMeta, WeakSet
+    fuga = "fuga"
+    try:
+        import multiprocessing
+        print(multiprocessing.cpu_count())
+    except ImportError as exception:
+        print(sys.version)
+    return math.pi</code></pre>
+<p>コマンド</p>
+<pre class="last">
+<code data-trim contenteditable>$ autoflake --in-place --remove-unused-variables example3-autoflake.py</code></pre>
+</section>
+<section>
+<p class="first">After</p>
+<pre class="last">
+<code data-trim contenteditable>import math
+import sys
+
+hoge = "hoge" # <= モジュールスコープの変数は消さないでくれる
+
+def foo():
+    try:
+        import multiprocessing
+        print(multiprocessing.cpu_count())
+    except ImportError:
+        print(sys.version)
+    return math.pi</code></pre>
+</section>
+<section>
+<h2>その他</h2>
+<ul class="first last simple">
+<li>docformatter ... pep257に併せてdocstringを整形<ul>
+<li><a class="reference external" href="https://pypi.python.org/pypi/docformatter">https://pypi.python.org/pypi/docformatter</a></li>
+</ul>
+</li>
+<li>eradicate ... 不要なコメントアウトを消す<ul>
+<li><a class="reference external" href="https://pypi.python.org/pypi/eradicate">https://pypi.python.org/pypi/eradicate</a></li>
+</ul>
+</li>
+<li>unify ... シングルクォーテーションに統一<ul>
+<li><a class="reference external" href="https://pypi.python.org/pypi/unify">https://pypi.python.org/pypi/unify</a></li>
+</ul>
+</li>
+<li>pyformat ... autopep8, autoflake, docformatter, unify 統合<ul>
+<li><a class="reference external" href="https://pypi.python.org/pypi/pyformat">https://pypi.python.org/pypi/pyformat</a></li>
+</ul>
+</li>
+<li>細かな設定ができなさそう</li>
+</ul>
+</section>
+<section>
+<h2>自動整形について</h2>
+<ul class="first last simple">
+<li>スタイルに合わせる時間を軽減できる</li>
+<li>一括整形とかやると割とスキッとする</li>
+<li>他人のコードに寛容になれる</li>
+<li>ただしツールを過信しすぎない</li>
+<li>PEP8とかPEP257とか凄い忘れる</li>
+</ul>
+</section>
+<section>
+<h2>3. 自動補完で楽する</h2>
+<ul class="first last simple">
+<li>コード書いてる時にやっぱり欲しい</li>
+<li>昔は python-complete 今は jedi</li>
+<li>virtualenvにも対応しているの地味に嬉しい</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/jedi">https://pypi.python.org/pypi/jedi</a></li>
+<li><a class="reference external" href="https://github.com/davidhalter/jedi-vim">https://github.com/davidhalter/jedi-vim</a></li>
+</ul>
+</section>
+<section>
+<h2>ドット区切りで補完</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/5gg-vf795qdg.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/5gg-vf795qdg.png" />
+<ul class="last simple">
+<li>ドット区切りの時に候補の表示</li>
+<li>精度がいい</li>
+<li>OFFにすることも可能</li>
+</ul>
+</section>
+<section>
+<h2>関数ヒントの表示</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/3vwi6tbmg5l8.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/3vwi6tbmg5l8.png" />
+<p class="last">関数の括弧にきたら勝手にでる</p>
+</section>
+<section>
+<h2>Docstringの表示</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/i9h-531qz5-9.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/i9h-531qz5-9.png" />
+<ul class="last simple">
+<li>対象にカーソルをおいて、「Shift + K」</li>
+</ul>
+</section>
+<section>
+<h2>定義場所のjump</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/xjen4s60vv7u.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/xjen4s60vv7u.png" />
+<ul class="last simple">
+<li>対象にカーソルをおいて、「&lt;leader&gt; + d」</li>
+<li>vimのTabで勝手に開く</li>
+</ul>
+</section>
+<section>
+<h2>その他には？</h2>
+<ul class="first simple">
+<li>&lt;leader&gt; + d  対象のリネーム</li>
+<li>&lt;leader&gt; + n  利用場所の一覧を別ウィンドウに表示</li>
+<li>&lt;leader&gt; + g  変数等の初期化場所にjump?</li>
+<li>若干じゃじゃ馬になる時があって旨く使いこなせてない</li>
+</ul>
+<aside class="last notes">
+<a class="reference external" href="http://jedidjah.ch/code/2013/1/19/why_jedi_not_rope/">http://jedidjah.ch/code/2013/1/19/why_jedi_not_rope/</a></aside>
+</section>
+<section>
+<h2>自動補完について</h2>
+<ul class="first last simple">
+<li>コードを書く手間が省ける</li>
+<li>コードリーディングが捗る</li>
+</ul>
+</section>
+<section>
+<h2>4. リファクタリングツールを使う</h2>
+<ul class="first last simple">
+<li>Ropeというツールを利用する</li>
+<li>出来る事が若干jediと被る<ul>
+<li>定義位置へのjump</li>
+<li>リネーム</li>
+</ul>
+</li>
+<li>リファクタリング作業に特化してる</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/rope">https://pypi.python.org/pypi/rope</a></li>
+<li><a class="reference external" href="https://github.com/python-rope">https://github.com/python-rope</a></li>
+<li><a class="reference external" href="http://methane.hatenablog.jp/entry/2013/01/11">http://methane.hatenablog.jp/entry/2013/01/11</a>/ropevimをインストールしてみる</li>
+</ul>
+</section>
+<section>
+<h2>最初にやる事</h2>
+<ul class="first simple">
+<li>ropeprojectを作る</li>
+<li>Vimを開いて「:RopeProjectConfig」と打つ</li>
+<li>Ropeプロジェクトを作成するか聞かれる</li>
+</ul>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png" src="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png" style="width: 90%;" /></a>
+</section>
+<section>
+<h2>設定ファイル</h2>
+<p class="first">.ropeproject/config.py</p>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/8atg~5cg7zvd.png" class="last" src="http://dl.dropbox.com/u/540566/Screenshots/8atg~5cg7zvd.png" />
+</section>
+<section>
+<h2>設定ファイル</h2>
+<ul class="first simple">
+<li>.ropeproject/config.py が設定ファイルにパスを通す</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable># プロジェクトのソースのパスを指定する
+# 'src/my_source_folder' for instance.
+prefs.add('source_folders', 'django_apps')
+
+# Virtualenvにパスを通す
+# You can extend python path for looking up modules
+prefs.add('python_path', '/Users/hoge/.virtualenvs/pyconjp2014/lib/python2.7/site-packages')</code></pre>
+</section>
+<section>
+<h2>プロジェクトのロード</h2>
+<ul class="first simple">
+<li>Vimを開いて「:RopeAnalyzeModules」とタイプ</li>
+<li>対処ソース情報とかを.ropeproject/objectdbに蓄えてくれる</li>
+<li>動作が変とか思ったらとりあえず一回やっとく</li>
+</ul>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/uod0w05a0vn0.png" class="last" src="http://dl.dropbox.com/u/540566/Screenshots/uod0w05a0vn0.png" />
+</section>
+<section>
+<h2>使ってみる</h2>
+<ul class="first last simple">
+<li>RopeRename .... 変数/関数/クラスをリネーム</li>
+<li>RopeMove .... 変数/関数/クラス等の移動</li>
+<li>RopeAutoImport .... import文の自動追記</li>
+<li>RopeFindImplementations .... 実装の検索</li>
+<li>RopeChangeSignature .... 関数の引数をその場で変更</li>
+<li>RopeExtractMethod .... メソッドの抽出</li>
+<li>RopeUndo/Redo ... 取り消し/やり直し</li>
+</ul>
+</section>
+<section>
+<h2>RopeRename</h2>
+<ul class="first simple">
+<li>プロジェクト全体の変数/関数/クラスなどをリネーム</li>
+</ul>
+<p>spam.py</p>
+<pre>
+<code data-trim contenteditable>def get_spam(num=1):
+    return "spam x {}".format(num)</code></pre>
+<p>main.py</p>
+<pre>
+<code data-trim contenteditable>from spam import get_spam
+
+print get_spam() # => "spam x 1"</code></pre>
+<p class="last">main.py の「get_spam()」にカーソルを置いて「:RopeRename」</p>
+</section>
+<section>
+<p class="first">新しい名前を聞かれる</p>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png" src="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png" style="width: 90%;" /></a>
+</section>
+<section>
+<p class="first">1を入力してプレビューを確認する。</p>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png" src="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png" style="width: 90%;" /></a>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png" src="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png" style="width: 60%;" /></a>
+<ul class="last simple">
+<li>diffを表示して事前に確認する事ができる</li>
+</ul>
+</section>
+<section>
+<h2>RopeMove</h2>
+<ul class="first simple">
+<li>プロジェクト全体の変数/関数/クラスなど移動</li>
+</ul>
+<p>spam.py</p>
+<pre>
+<code data-trim contenteditable>def get_spam(num=1):
+    return "spam x {}".format(num)</code></pre>
+<p>main.py</p>
+<pre>
+<code data-trim contenteditable>from spam import get_spam
+
+print get_spam() # => "spam x 1"</code></pre>
+<ul class="last simple">
+<li>spam.pyのget_spamをmain.py移動</li>
+</ul>
+</section>
+<section>
+<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png" src="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png" style="width: 90%;" /></a>
+</section>
+<section>
+<p class="first">丸っと移動される。不要なimportも削除</p>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png" src="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png" style="width: 60%;" /></a>
+</section>
+<section>
+<h2>RopeAutoImport</h2>
+<ul class="first simple">
+<li>インポート文を自動で追記してくれる</li>
+</ul>
+<p>spam.py</p>
+<pre>
+<code data-trim contenteditable>def get_spam(num=1):
+   return "spam x {}".format(num)</code></pre>
+<p>main.py</p>
+<pre>
+<code data-trim contenteditable>print get_spam() # => "spam x 1"</code></pre>
+<ul class="last simple">
+<li>import文が書いてない</li>
+<li>get_spam()にカーソルを置いて「:RopeAutoImport」</li>
+</ul>
+</section>
+<section>
+<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png" src="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png" style="width: 90%;" /></a>
+</section>
+<section>
+<h2>RopeFindImplementations</h2>
+<ul class="first simple">
+<li>継承先の実装個所を探してくれる</li>
+</ul>
+<p>spam.py</p>
+<pre class="last">
+<code data-trim contenteditable># BaseSpamという抽象クラスを用意
+from abc import ABCMeta
+
+class BaseSpam:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def get_spam(self):
+       """ must implement. """</code></pre>
+</section>
+<section>
+<p class="first">main.py</p>
+<pre>
+<code data-trim contenteditable>from spam import BaseSpam
+
+class MySpam(BaseSpam):
+
+    def get_spam(self, num=1):
+        return "my spam x {}".format(num)
+
+class YourSpam(BaseSpam):
+
+    def get_spam(self, num=1):
+        return "your spam x {}".format(num)</code></pre>
+<ul class="last simple">
+<li>BaseSpamのget_spamが実装してある個所を探したい</li>
+<li>BaseSpamのget_spamにカーソルを置いて「:RopeFindImplementations」</li>
+</ul>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png" src="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>実装してある個所を見つけてくれる</li>
+</ul>
+</section>
+<section>
+<h2>RopeChangeSignature</h2>
+<ul class="first simple">
+<li>例えば関数の引数を急に変えたくなった時に使う</li>
+<li>get_spamにpriceを追加したい</li>
+</ul>
+<p>spam.py</p>
+<pre>
+<code data-trim contenteditable>def get_spam(num=1):
+    return "spam x {}".format(num)</code></pre>
+<p>main.py</p>
+<pre>
+<code data-trim contenteditable>from spam import get_spam
+
+print get_spam() # => "spam x 1"</code></pre>
+<ul class="last simple">
+<li>get_spamにカーソルを置いて「:RopeChangeSignature」</li>
+</ul>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png" src="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png" style="width: 90%;" /></a>
+<p class="last">引数にpriceを追加</p>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png" src="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>他の呼び出しに影響が無いように配慮してくれる</li>
+</ul>
+</section>
+<section>
+<h2>RopeExtractMethod</h2>
+<ul class="first simple">
+<li>選択範囲をよしなにメソッド化</li>
+<li>以下のif文を丸っとメソッドにする</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable># 〜 省略 〜
+
+class Customer(object):
+
+    def statement(self):
+        total_amount = 0
+        frequent_renter_points = 0
+        rentals = self._rentals
+        result = "Rental Record for {name}\n".format(name=self.name)
+
+        for each in rentals:
+            this_amount = 0
+
+            # ここのif文全体を丸っとメソッドにする
+            if each.movie.price_code == Movie.REGULAR:
+                this_amount += 2
+                if each.days_rented > 2:
+                    this_amount += (each.days_rented - 2) * 1.5
+
+            elif each.movie.price_code == Movie.NEW_RELEASE:
+                this_amount += each.days_rented * 3
+
+            elif each.movie.price_code == Movie.CHILDRENS:
+                this_amount += 1.5
+                if each.days_rented > 3:
+                    this_amount += (each.days_rented - 3) * 1.5
+
+# 〜 省略 〜</code></pre>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png" src="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>抽出したい範囲を選択 -&gt; RopeExtractMethodを実行</li>
+<li>メソッド名は「_amount_for」</li>
+</ul>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png" src="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>if文を削除し一つのメソッド呼び出しになった</li>
+</ul>
+</section>
+<section>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png" src="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>文脈を呼んで、引数をよしなにしてくれるのが嬉しい</li>
+</ul>
+</section>
+<section>
+<h2>RopeUndo/RopeRedo</h2>
+<ul class="first last simple">
+<li>Ropeでの変更内容は履歴として保存</li>
+<li>.ropeproject/history</li>
+<li>直前の操作を取り消し or やり直し可能</li>
+<li>大量ファイルのRenameに失敗しても安心</li>
+</ul>
+</section>
+<section>
+<p class="first">RopeUndo</p>
+<a class="reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png" src="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png" style="width: 70%;" /></a>
+<p>RopeRedo</p>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png" src="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png" style="width: 70%;" /></a>
+</section>
+<section>
+<h2>ショートカット</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/lry-vq9fwgyq.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/lry-vq9fwgyq.png" />
+</section>
+<section>
+<h2>Ropeについて</h2>
+<ul class="first last simple">
+<li>IDEに見劣りしない編集作業が可能になる。</li>
+<li>事前に変更内容をプレビューは良い</li>
+<li>慣れるまで多少時間が掛かった</li>
+<li>使い慣れてるエディタで作業できるのは嬉しい</li>
+<li>こいつもじゃじゃ馬になることがある。</li>
+</ul>
+</section>
+<section>
+<h2>5. コードメトリクスを見る</h2>
+<ul class="first last simple">
+<li>定量的な見方でリファクタリング対象を探す</li>
+<li>複雑になりすぎてないかチェック</li>
+<li>潜在的にバグになりそうな所を特定しやすくなる</li>
+</ul>
+</section>
+<section>
+<h2>ところで</h2>
+<ul class="first simple">
+<li>Code Climateて知ってますか？</li>
+<li>コードメトリクス等で自動でレビューしてくれる</li>
+</ul>
+<img alt="https://s3.amazonaws.com/dandemeyere_production/2014/feed.jpg" class="last" src="https://s3.amazonaws.com/dandemeyere_production/2014/feed.jpg" />
+</section>
+<section>
+<h2>（・ω・）いいなぁ</h2>
+</section>
+<section>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png" />
+</section>
+<section data-background="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png">
+<div class="first last"><div style="font-size:35px; padding:10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+<h2 style="color:white;">
+まだダメです！
+</h2>
+</div></div></section>
+<section>
+<h2>Radon</h2>
+<img alt="http://ecx.images-amazon.com/images/I/518VNBK1WCL.jpg" class="first last" src="http://ecx.images-amazon.com/images/I/518VNBK1WCL.jpg" />
+</section>
+<section>
+<h2>Radon</h2>
+<ul class="first last simple">
+<li>メトリクスをカジュアルに見せてくれる</li>
+<li>Code ClimateのようにABC評価を付けてくれる<ul>
+<li>Cyclomatic Complexity</li>
+<li>Maintainability Index</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/radon">https://pypi.python.org/pypi/radon</a></li>
+</ul>
+</section>
+<section>
+<h2>Cyclomatic Complexity</h2>
+<ul class="first last simple">
+<li>循環的複雑度</li>
+<li>Thomas J. McCabe という人が考案</li>
+<li>幾つか決定する方法がある</li>
+<li>もっとも簡単な方法は「閉じたループ + 1」</li>
+<li><a class="reference external" href="http://ja.wikipedia.org/wiki">http://ja.wikipedia.org/wiki</a>/循環的複雑度</li>
+</ul>
+</section>
+<section>
+<h2>簡単な例</h2>
+<pre class="first">
+<code data-trim contenteditable>def fizzbuzz(max_number):
+    ret = []
+    for i in range(1, max_number + 1): # <= +1
+        if i % 15 == 0:                # <= +1
+            ret.append('FizzBuzz')
+        elif i % 5 == 0:               # <= +1
+            ret.append('Buzz')
+        elif i % 3 == 0:               # <= +1
+            ret.append('Fizz')
+        else:
+            ret.append(i)
+    return ret
+
+print fizzbuzz(max_number=15)
+# => [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz',
+#    'Buzz', 11, 'Fizz', 13, 14, 'FizzBuzz']</code></pre>
+<ul class="last simple">
+<li>この場合 制御構文は全部4つ</li>
+<li>4 + 1 = 5 &lt;= 循環的複雑度</li>
+</ul>
+</section>
+<section>
+<h2>Radonの評価</h2>
+<ul class="first simple">
+<li>Radonは6段階に分けて複雑度を評価</li>
+</ul>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png" src="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png" style="width: 90%;" /></a>
+</section>
+<section>
+<h2>Radon CC</h2>
+<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png" src="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png" style="width: 90%;" /></a>
+<ul class="last simple">
+<li>fizzbuzzは循環的複雑度「5」なのでA評価</li>
+<li>後一個分岐が増えたら？</li>
+</ul>
+</section>
+<section>
+<p class="first">わざと複雑度をあげてみる</p>
+<pre>
+<code data-trim contenteditable>def fizzbuzz(max_number):
+    ret = []
+    for i in range(1, max_number + 1):
+        if i % 15 == 0:
+            ret.append('FizzBuzz')
+        elif i % 5 == 0:
+            ret.append('Buzz')
+        elif i % 3 == 0:
+            ret.append('Fizz')
+        elif i % 2 == 0:         # <= 追加 +1
+            pass  # do nothing
+        else:
+            ret.append(i)
+    return ret</code></pre>
+<p>複雑度が6になるので「B」になる</p>
+<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png" src="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png" style="width: 70%;" /></a>
+</section>
+<section>
+<p class="first">rand ccコマンドのオプションは色々ある</p>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/mltprc411x-b.png" src="http://dl.dropbox.com/u/540566/Screenshots/mltprc411x-b.png" />
+<p class="last">via <a class="reference external" href="http://qiita.com/mima_ita/items/5010aaa6808b7290d68d">http://qiita.com/mima_ita/items/5010aaa6808b7290d68d</a></p>
+</section>
+<section>
+<h2>Maintainability Index</h2>
+<ul class="first last simple">
+<li>保守容易性指数</li>
+<li>コードの相対的な保守容易性を表す</li>
+<li>0 〜 100の数値 最高評価が100</li>
+<li>複雑度とコードの行数などを元に計算</li>
+</ul>
+</section>
+<section>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/d57bi3e12fnw.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/d57bi3e12fnw.png" />
+<p class="last">via <a class="reference external" href="http://qiita.com/mima_ita/items/5010aaa6808b7290d68d">http://qiita.com/mima_ita/items/5010aaa6808b7290d68d</a></p>
+</section>
+<section>
+<h2>歪んだ楽しみ方</h2>
+<ul class="first last simple">
+<li>良さげなOSSを見つける</li>
+<li>Sentryという著名なログトラッキングツール</li>
+<li>実行しみてる</li>
+</ul>
+</section>
+<section>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/mu7ayogeisn0.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/mu7ayogeisn0.png" />
+</section>
+<section data-background="http://dl.dropbox.com/u/540566/Screenshots/7rmin~k-pkx5.png">
+<div class="first last"><div style="font-size:35px; padding:10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+<h2 style="color:white;">
+オールA 評価
+</h2>
+<h3 style="color:white;">
+普通に凄かったw
+</h3>
+</div></div></section>
+<section>
+<h2>その他</h2>
+<ul class="first last simple">
+<li>Raw Metrics ... 単純な行数、コメント、空行なども表示</li>
+<li>radon raw コマンドで取得可能</li>
+</ul>
+</section>
+<section>
+<h2>コードメトリクスについて</h2>
+<ul class="first last simple">
+<li>評価が高ければ必ずしも良いというものではない。</li>
+<li>コードを書く、リファクタリングをする時間は有限。</li>
+<li>指標を参考にしつつ、適切な改善対象を見つける。</li>
+<li>Radonは素早く結果が見れるのでオススメ</li>
+</ul>
+</section>
+<section>
+<h2>6. デッドコードを探す</h2>
+<ul class="first last simple">
+<li>大規模なプロジェクトとかにアサイン</li>
+<li>完全に死んでるコードを排除したい</li>
+<li>一つ一つ調べるのではなくて、一括で調べられると良い</li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/9524873/finding-dead-code-in-large-python-project">http://stackoverflow.com/questions/9524873/finding-dead-code-in-large-python-project</a></li>
+</ul>
+</section>
+<section>
+<h2>銀の弾丸は無かた</h2>
+</section>
+<section>
+<h2>vulture</h2>
+<img alt="http://dl.dropbox.com/u/540566/Screenshots/knzi4kv2s57v.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/knzi4kv2s57v.png" />
+</section>
+<section>
+<ul class="first last simple">
+<li>Find dead code</li>
+<li>静的解析して死んでるコードを一括で見つけてくれる</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/vulture">https://pypi.python.org/pypi/vulture</a></li>
+</ul>
+</section>
+<section>
+<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png" src="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png" style="width: 90%;" /></a>
+</section>
+<section>
+<pre class="first">
+<code data-trim contenteditable>class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('full_slug', 'owner', 'platform', 'status', 'date_added')
+    list_filter = ('status', 'platform', 'public')
+    search_fields = ('name', 'owner__username', 'owner__email', 'team__slug',
+                     'team__name', 'slug')
+    raw_id_fields = ('owner', 'team')
+
+    def full_slug(self, instance):
+        if not instance.team:
+            slug = instance.slug
+        else:
+            slug = '%s/%s' % (instance.team.slug, instance.slug)</code></pre>
+<ul class="last simple">
+<li>確かにコード中では使ってないけど使ってる</li>
+<li>virtualenvの中とかそういう所までは考慮してくれない</li>
+<li>ただ実行結果が出てくるのは早い</li>
+</ul>
+</section>
+<section>
+<h2>Coverageを取る</h2>
+<ul class="first last simple">
+<li>全てのコードを動かせるなら</li>
+<li>Coverageで計測できる</li>
+</ul>
+</section>
+<section>
+<h2>例えばDjango</h2>
+<p class="first">例えばDjango</p>
+<pre>
+<code data-trim contenteditable>coverage run manage.py runserver --noreload</code></pre>
+<p>アプリ動作テストみたいなのを一通りする</p>
+<pre>
+<code data-trim contenteditable>coverage report -m</code></pre>
+<p>カバレッジを見る</p>
+<pre>
+<code data-trim contenteditable>[run]
+omit = *migrations*,*.virtualenvs*</code></pre>
+<p class="last">除外対象を .coveragercに書くと良い</p>
+</section>
+<section>
+<ul class="first last simple">
+<li>起動時で自動でロードされるもの</li>
+<li>操作した分動作したもの</li>
+<li>これらはカバレッジに反映される</li>
+</ul>
+</section>
+<section>
+<h2>デッドコードを探す</h2>
+<ul class="first last simple">
+<li>簡単には行かない</li>
+<li>リファクタリングしつつ、適宜掃除するのが大事</li>
+<li>紹介したツールは参考程度に見るには良い</li>
+</ul>
+</section>
+<section>
+<h2>まとめ</h2>
+<div class="first last"><ol>
+<li class="fragment">コーディングスタイルを知る</li>
+<li class="fragment">自動整形に任せる</li>
+<li class="fragment">自動補完で楽する</li>
+<li class="fragment">リファクタリングツールを使う</li>
+<li class="fragment">コードメトリクスを見る</li>
+<li class="fragment">デッドコードを探す</li>
+</ol></div></section>
+<section>
+<h2>まとめ</h2>
+<div class="first last"><ol>
+<li class="fragment">コードを書く時間は有限</li>
+<li class="fragment">ツールに任せる</li>
+<li class="fragment">紹介しなかったツールも沢山</li>
+<li class="fragment">手に馴染むにツールを手に入れる</li>
+<li class="fragment">注力すべき作業に集中しよう</li>
+</ol></div></section>
+<section>
+<h2>謝辞</h2>
+<ul class="first last simple">
+<li>ツールの開発者さん</li>
+<li>Webにいつも書いてくれる皆さん</li>
+<li>いつもありがとうざいます m(_ _)m</li>
+</ul>
+</section>
+<section>
+<h2>ご清聴ありがとうございました</h2>
+</section>
+</div>
+
+
+      </div>
+    </div>
+    
+<script src="_static/js/jquery.min.js"></script>
+<script src="_static/lib/js/head.min.js"></script>
+<script src="_static/js/reveal.min.js"></script>
+    <script>
+
+      // change DOM for reveal.js
+      $("div.section h1").remove();
+      var content = $("div.section").html();
+      $("div.section").remove();
+      $("div.slides").html(content);
+
+      Reveal.initialize({
+        width: 960,
+        height: 700,
+
+        margin: 0.1,
+
+        minScale: 0.2,
+        maxScale: 1.0,
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        keyboard : true,
+        overview: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        fragments: true,
+
+        autoSlide: 0,
+        mouseWheel: false,
+        rollingLinks: false,
+        previewLinks: false,
+
+        transitionSpeed: "slow",
+        backgroundTransition: "defaul",
+
+        slideNumber: true,
+        embedded: false,
+        autoSlideStoppable: true,
+        hideAddressBar: true,
+
+        parallaxBackgroundImage: '',
+        parallaxBackgroundSize: '',
+
+        focusBodyOnPageVisiblityChange: true,
+
+        viewDistance: 3,
+
+        theme: Reveal.getQueryHash().theme || "serif",
+        transition: Reveal.getQueryHash().transition || "linear",
+
+        
+
+        dependencies: [
+           { src: '_static/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+           { src: '_static/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+           { src: '_static/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+           { src: '_static/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+           { src: '_static/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+           { src: '_static/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+    
+  </body>
+</html>
