@@ -1,0 +1,12 @@
+*.pyc
+*.swp
+bin
+_build
+develop-eggs
+dist
+eggs
+parts
+*.egg-info
+*.*~
+.tox
+.coverage
