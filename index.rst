@@ -13,7 +13,7 @@
 
 .. revealjs:: 資料
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/zvl_99mqw~gl.png
+ .. image:: images/zvl_99mqw~gl.png
 
  http://tell-k.github.io/pyconjp2014/
 
@@ -45,7 +45,7 @@
 
 .. revealjs:: 
  :noheading:
- :data-background: http://dl.dropbox.com/u/540566/Screenshots/_0~vb9q2y~4l.png
+ :data-background: images/_0~vb9q2y~4l.png
 
  .. raw:: html
  
@@ -58,7 +58,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/maln8-0saby2.png
+ .. image:: images/maln8-0saby2.png
 
 .. revealjs::  対象者
 
@@ -115,7 +115,7 @@
 
 .. revealjs:: PEP 8 -- Style Guide for Python Code
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/52ya4pswctfy.png
+ .. image:: images/52ya4pswctfy.png
 
  via http://legacy.python.org/dev/peps/pep-0008/
 
@@ -130,7 +130,7 @@
 
 .. revealjs:: PEP 257 -- Docstring Conventions
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/dfh_-vk-nh3c.png
+ .. image:: images/dfh_-vk-nh3c.png
  
  via http://legacy.python.org/dev/peps/pep-0257/
 
@@ -328,7 +328,7 @@
   * ３つのツールをバラバラに使うのは。。
 
 .. revealjs:: 
- :data-background: http://dl.dropbox.com/u/540566/Screenshots/mrlb6sebeopl.png
+ :data-background: images/mrlb6sebeopl.png
 
  .. raw:: html
 
@@ -348,7 +348,7 @@
 
 .. revealjs:: 某社レビューガイドラインのファーストステップ
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png
+ .. image:: images/brciapvh0zzx.png
    :width: 150%
 
  訳) 最低flake8に通してからレビューに出そうや。な?
@@ -366,7 +366,7 @@
 
 .. revealjs::
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png
+ .. image:: images/6-ebmt-qmsil.png
    :scale: 100%
 
 .. revealjs:: flake8のTips
@@ -687,7 +687,7 @@
 
 .. revealjs:: ドット区切りで補完
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/5gg-vf795qdg.png
+ .. image:: images/5gg-vf795qdg.png
 
  * ドット区切りの時に候補の表示
  * 精度がいい
@@ -695,19 +695,19 @@
 
 .. revealjs:: 関数ヒントの表示
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/3vwi6tbmg5l8.png
+ .. image:: images/3vwi6tbmg5l8.png
 
  関数の括弧にきたら勝手にでる
 
 .. revealjs:: Docstringの表示
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/i9h-531qz5-9.png
+ .. image:: images/i9h-531qz5-9.png
 
  * 対象にカーソルをおいて、「Shift + K」
 
 .. revealjs:: 定義場所のjump
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/xjen4s60vv7u.png
+ .. image:: images/xjen4s60vv7u.png
 
  * 対象にカーソルをおいて、「<leader> + d」
  * vimのTabで勝手に開く
@@ -748,7 +748,7 @@
  * Vimを開いて「:RopeProjectConfig」と打つ
  * Ropeプロジェクトを作成するか聞かれる
  
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png
+ .. image:: images/cjodp38za3yt.png
   :width: 90%
 
 
@@ -756,7 +756,7 @@
 
  .ropeproject/config.py
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/8atg~5cg7zvd.png
+ .. image:: images/8atg~5cg7zvd.png
 
 .. revealjs:: 設定ファイル
 
@@ -781,7 +781,7 @@
  * 対処ソース情報とかを.ropeproject/objectdbに蓄えてくれる
  * 動作が変とか思ったらとりあえず一回やっとく
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/uod0w05a0vn0.png
+ .. image:: images/uod0w05a0vn0.png
 
 .. revealjs:: 使ってみる
 
@@ -819,7 +819,7 @@
 
  新しい名前を聞かれる
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png
+ .. image:: images/j-9unv3oul_w.png
     :width: 90%
 
 .. revealjs::
@@ -827,13 +827,13 @@
 
  1を入力してプレビューを確認する。
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png
+ .. image:: images/0o5ex4s5a6tj.png
     :width: 90%
 
 .. revealjs::
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png
+ .. image:: images/c~j3fz7p~r5p.png
     :width: 60%
 
  * diffを表示して事前に確認する事ができる
@@ -862,7 +862,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png
+ .. image:: images/l5a~pgwdpmqr.png
     :width: 90%
 
 .. revealjs:: 
@@ -870,7 +870,7 @@
 
  丸っと移動される。不要なimportも削除
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png
+ .. image:: images/gs6mkrvbgasp.png
     :width: 60%
 
 .. revealjs:: RopeAutoImport
@@ -896,7 +896,7 @@
 .. revealjs:: 
  :noheading:
  
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png
+ .. image:: images/0~j00-gnd6pl.png
     :width: 90%
 
 .. revealjs:: RopeFindImplementations
@@ -940,7 +940,7 @@
 .. revealjs:: 
  :noheading:
  
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png
+ .. image:: images/k73wf7060k3a.png
     :width: 90%
 
  * 実装してある個所を見つけてくれる
@@ -970,7 +970,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png
+ .. image:: images/heyfcc0i6den.png
     :width: 90%
 
  引数にpriceを追加
@@ -978,7 +978,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png
+ .. image:: images/te91r-iclefr.png
     :width: 90%
 
  * 他の呼び出しに影響が無いように配慮してくれる
@@ -1022,7 +1022,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png
+ .. image:: images/5l_y7j2ubcbi.png
     :width: 90%
 
  * 抽出したい範囲を選択 -> RopeExtractMethodを実行
@@ -1031,7 +1031,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png
+ .. image:: images/e7j3bh_-dhx4.png
     :width: 90%
 
  * if文を削除し一つのメソッド呼び出しになった
@@ -1039,7 +1039,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png
+ .. image:: images/euo4x~bl9bzu.png
     :width: 90%
 
  * 文脈を呼んで、引数をよしなにしてくれるのが嬉しい
@@ -1056,17 +1056,17 @@
  
  RopeUndo
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png
+ .. image:: images/yv1j37mcbcte.png
     :width: 70%
 
  RopeRedo
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png
+ .. image:: images/yvtorvcga9_4.png
     :width: 70%
 
 .. revealjs:: ショートカット
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/lry-vq9fwgyq.png
+ .. image:: images/lry-vq9fwgyq.png
 
 .. revealjs:: Ropeについて
 
@@ -1093,10 +1093,10 @@
 
 .. revealjs:: 
 
-   .. image:: http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png
+   .. image:: images/i-~it~ub7iu9.png
 
 .. revealjs:: 
-  :data-background: http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png
+  :data-background: images/i-~it~ub7iu9.png
 
   .. raw:: html
  
@@ -1156,12 +1156,12 @@
 
   * Radonは6段階に分けて複雑度を評価
 
-  .. image:: http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png
+  .. image:: images/phyq0if-1d48.png
      :width: 90%
 
 .. revealjs:: Radon CC
 
-  .. image:: http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png
+  .. image:: images/~7h9ti469jr7.png
      :width: 90%
 
   * fizzbuzzは循環的複雑度「5」なのでA評価
@@ -1191,14 +1191,14 @@
   
  複雑度が6になるので「B」になる
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png
+ .. image:: images/_vxdmxoq2vcj.png
     :width: 70%
 
 .. revealjs::
 
  rand ccコマンドのオプションは色々ある
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/mltprc411x-b.png
+ .. image:: images/mltprc411x-b.png
  
  via http://qiita.com/mima_ita/items/5010aaa6808b7290d68d
 
@@ -1212,7 +1212,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/d57bi3e12fnw.png
+ .. image:: images/d57bi3e12fnw.png
  
  via http://qiita.com/mima_ita/items/5010aaa6808b7290d68d
 
@@ -1225,10 +1225,10 @@
 .. revealjs:: 
  :noheading:
  
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/mu7ayogeisn0.png
+ .. image:: images/mu7ayogeisn0.png
 
 .. revealjs:: 
- :data-background: http://dl.dropbox.com/u/540566/Screenshots/7rmin~k-pkx5.png
+ :data-background: images/7rmin~k-pkx5.png
 
  .. raw:: html
 
@@ -1264,7 +1264,7 @@
 
 .. revealjs:: vulture
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/knzi4kv2s57v.png
+ .. image:: images/knzi4kv2s57v.png
 
 .. revealjs:: vulture
  :noheading:
@@ -1276,7 +1276,7 @@
 .. revealjs:: 
  :noheading:
 
- .. image:: http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png
+ .. image:: images/lrs2ndn-uh03.png
    :width: 90%
 
 .. revealjs::
