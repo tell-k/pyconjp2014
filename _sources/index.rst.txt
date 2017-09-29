@@ -1196,7 +1196,7 @@
 
 .. revealjs::
 
- rand ccコマンドのオプションは色々ある
+ radon ccコマンドのオプションは色々ある
 
  .. image:: images/mltprc411x-b.png
  
