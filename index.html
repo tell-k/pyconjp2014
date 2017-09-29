@@ -12,8 +12,8 @@
     
 
     
-<link rel="stylesheet" href="_static/css/reveal.min.css">
-<link rel="stylesheet" href="_static/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="_static/css/reveal.css">
+<link rel="stylesheet" href="_static/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="_static/lib/css/zenburn.css">
 <link rel="stylesheet" href="_static/revealjs.css" type="text/css" />
 
@@ -46,12 +46,12 @@ PyCon JP 2014.</small>
 </section>
 <section>
 <h2>資料</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/zvl_99mqw~gl.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/zvl_99mqw~gl.png" />
+<img alt="_images/zvl_99mqw~gl.png" class="first" src="_images/zvl_99mqw~gl.png" />
 <p class="last"><a class="reference external" href="http://tell-k.github.io/pyconjp2014/">http://tell-k.github.io/pyconjp2014/</a></p>
 </section>
 <section>
 <h2>誰だお前は</h2>
-<a class="first reference internal image-reference" href="_images/tell-k.png"><img alt="_images/tell-k.png" src="_images/tell-k.png" style="width: 200px;" /></a>
+<a class="first reference internal image-reference" href="images/tell-k.png"><img alt="images/tell-k.png" src="images/tell-k.png" style="width: 200px;" /></a>
 <div class="last"><ul>
 <li class="fragment">名前: tell-k</li>
 <li class="fragment">所属: <a href="http://www.beproud.jp/">beproud.inc</a></li>
@@ -67,14 +67,14 @@ PyCon JP 2014.</small>
 <li class="fragment">その時に使ってるツールが結構ある</li>
 <li class="fragment">一度まとめてみたかった</li>
 </ol></div></section>
-<section data-background="http://dl.dropbox.com/u/540566/Screenshots/_0~vb9q2y~4l.png">
+<section data-background="images/_0~vb9q2y~4l.png">
 <div class="first last"><div style="font-size:35px; padding:30px 10px 10px 10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
 <h3 style="color:white;line-height:60px;">
 リファクタリングの話はしない。<br />これからもするつもりはない。<br />いいね？
 </h3>
 </div></div></section>
 <section>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/maln8-0saby2.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/maln8-0saby2.png" />
+<img alt="_images/maln8-0saby2.png" class="first last" src="_images/maln8-0saby2.png" />
 </section>
 <section>
 <h2>対象者</h2>
@@ -110,14 +110,14 @@ PyCon JP 2014.</small>
 </section>
 <section>
 <ul class="first last simple">
-<li>PEP8 &#8211; Style Guide for Python Code</li>
-<li>PEP257 &#8211; Docstring Conventions</li>
+<li>PEP8 – Style Guide for Python Code</li>
+<li>PEP257 – Docstring Conventions</li>
 <li>Pythonコミュニティが推奨するスタイルが存在する</li>
 </ul>
 </section>
 <section>
 <h2>PEP 8 -- Style Guide for Python Code</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/52ya4pswctfy.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/52ya4pswctfy.png" />
+<img alt="_images/52ya4pswctfy.png" class="first" src="_images/52ya4pswctfy.png" />
 <p class="last">via <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">http://legacy.python.org/dev/peps/pep-0008/</a></p>
 </section>
 <section>
@@ -131,16 +131,16 @@ PyCon JP 2014.</small>
 </section>
 <section>
 <h2>PEP 257 -- Docstring Conventions</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/dfh_-vk-nh3c.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/dfh_-vk-nh3c.png" />
+<img alt="_images/dfh_-vk-nh3c.png" class="first" src="_images/dfh_-vk-nh3c.png" />
 <p class="last">via <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0257/">http://legacy.python.org/dev/peps/pep-0257/</a></p>
 </section>
 <section>
 <h2>ツールでチェック</h2>
 <ul class="first last simple">
-<li>pep8 ... pepe8のチェック</li>
-<li>pep257 ... pep257のチェック</li>
-<li>pyflakes ... 文法エラーなどをチェック</li>
-<li>flake8 ... pep8 + pyflakes</li>
+<li>pep8 … pepe8のチェック</li>
+<li>pep257 … pep257のチェック</li>
+<li>pyflakes … 文法エラーなどをチェック</li>
+<li>flake8 … pep8 + pyflakes</li>
 </ul>
 </section>
 <section>
@@ -320,7 +320,7 @@ example3.py:15: local variable 'exception' is assigned to but never used</code><
 <li>３つのツールをバラバラに使うのは。。</li>
 </ul>
 </section>
-<section data-background="http://dl.dropbox.com/u/540566/Screenshots/mrlb6sebeopl.png">
+<section data-background="images/mrlb6sebeopl.png">
 <div class="first last"><div style="font-size:35px; padding:30px 10px 10px 10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
   <h3 style="color:white;line-height:60px;">
   ぶっちゃけ面倒<br />いままで紹介したツールは一旦全て忘れてください
@@ -338,7 +338,7 @@ example3.py:15: local variable 'exception' is assigned to but never used</code><
 </section>
 <section>
 <h2>某社レビューガイドラインのファーストステップ</h2>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png" src="http://dl.dropbox.com/u/540566/Screenshots/brciapvh0zzx.png" style="width: 150%;" /></a>
+<a class="first reference internal image-reference" href="_images/brciapvh0zzx.png"><img alt="_images/brciapvh0zzx.png" src="_images/brciapvh0zzx.png" style="width: 150%;" /></a>
 <p class="last">訳) 最低flake8に通してからレビューに出そうや。な?</p>
 </section>
 <section>
@@ -355,7 +355,7 @@ example3.py:15: local variable 'exception' is assigned to but never used</code><
 </ul>
 </section>
 <section>
-<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png" src="http://dl.dropbox.com/u/540566/Screenshots/6-ebmt-qmsil.png" /></a>
+<a class="first last reference internal image-reference" href="_images/6-ebmt-qmsil.png"><img alt="_images/6-ebmt-qmsil.png" src="_images/6-ebmt-qmsil.png" style="width: 605.0px; height: 557.0px;" /></a>
 </section>
 <section>
 <h2>flake8のTips</h2>
@@ -573,7 +573,7 @@ Only actual code should be reindented.
 <h2>tips</h2>
 <ul class="first last simple">
 <li>特定のディレクトリ以下を一発置換</li>
-<li>&#8211;aggresiveを重ねるとアグレッシブになる</li>
+<li>–aggresiveを重ねるとアグレッシブになる</li>
 </ul>
 </section>
 <section>
@@ -630,19 +630,19 @@ def foo():
 <section>
 <h2>その他</h2>
 <ul class="first last simple">
-<li>docformatter ... pep257に併せてdocstringを整形<ul>
+<li>docformatter … pep257に併せてdocstringを整形<ul>
 <li><a class="reference external" href="https://pypi.python.org/pypi/docformatter">https://pypi.python.org/pypi/docformatter</a></li>
 </ul>
 </li>
-<li>eradicate ... 不要なコメントアウトを消す<ul>
+<li>eradicate … 不要なコメントアウトを消す<ul>
 <li><a class="reference external" href="https://pypi.python.org/pypi/eradicate">https://pypi.python.org/pypi/eradicate</a></li>
 </ul>
 </li>
-<li>unify ... シングルクォーテーションに統一<ul>
+<li>unify … シングルクォーテーションに統一<ul>
 <li><a class="reference external" href="https://pypi.python.org/pypi/unify">https://pypi.python.org/pypi/unify</a></li>
 </ul>
 </li>
-<li>pyformat ... autopep8, autoflake, docformatter, unify 統合<ul>
+<li>pyformat … autopep8, autoflake, docformatter, unify 統合<ul>
 <li><a class="reference external" href="https://pypi.python.org/pypi/pyformat">https://pypi.python.org/pypi/pyformat</a></li>
 </ul>
 </li>
@@ -671,7 +671,7 @@ def foo():
 </section>
 <section>
 <h2>ドット区切りで補完</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/5gg-vf795qdg.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/5gg-vf795qdg.png" />
+<img alt="_images/5gg-vf795qdg.png" class="first" src="_images/5gg-vf795qdg.png" />
 <ul class="last simple">
 <li>ドット区切りの時に候補の表示</li>
 <li>精度がいい</li>
@@ -680,19 +680,19 @@ def foo():
 </section>
 <section>
 <h2>関数ヒントの表示</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/3vwi6tbmg5l8.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/3vwi6tbmg5l8.png" />
+<img alt="_images/3vwi6tbmg5l8.png" class="first" src="_images/3vwi6tbmg5l8.png" />
 <p class="last">関数の括弧にきたら勝手にでる</p>
 </section>
 <section>
 <h2>Docstringの表示</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/i9h-531qz5-9.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/i9h-531qz5-9.png" />
+<img alt="_images/i9h-531qz5-9.png" class="first" src="_images/i9h-531qz5-9.png" />
 <ul class="last simple">
 <li>対象にカーソルをおいて、「Shift + K」</li>
 </ul>
 </section>
 <section>
 <h2>定義場所のjump</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/xjen4s60vv7u.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/xjen4s60vv7u.png" />
+<img alt="images/xjen4s60vv7u.png" class="first" src="images/xjen4s60vv7u.png" />
 <ul class="last simple">
 <li>対象にカーソルをおいて、「&lt;leader&gt; + d」</li>
 <li>vimのTabで勝手に開く</li>
@@ -738,12 +738,12 @@ def foo():
 <li>Vimを開いて「:RopeProjectConfig」と打つ</li>
 <li>Ropeプロジェクトを作成するか聞かれる</li>
 </ul>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png" src="http://dl.dropbox.com/u/540566/Screenshots/cjodp38za3yt.png" style="width: 90%;" /></a>
+<a class="last reference internal image-reference" href="_images/cjodp38za3yt.png"><img alt="_images/cjodp38za3yt.png" src="_images/cjodp38za3yt.png" style="width: 90%;" /></a>
 </section>
 <section>
 <h2>設定ファイル</h2>
 <p class="first">.ropeproject/config.py</p>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/8atg~5cg7zvd.png" class="last" src="http://dl.dropbox.com/u/540566/Screenshots/8atg~5cg7zvd.png" />
+<img alt="_images/8atg~5cg7zvd.png" class="last" src="_images/8atg~5cg7zvd.png" />
 </section>
 <section>
 <h2>設定ファイル</h2>
@@ -766,18 +766,18 @@ prefs.add('python_path', '/Users/hoge/.virtualenvs/pyconjp2014/lib/python2.7/sit
 <li>対処ソース情報とかを.ropeproject/objectdbに蓄えてくれる</li>
 <li>動作が変とか思ったらとりあえず一回やっとく</li>
 </ul>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/uod0w05a0vn0.png" class="last" src="http://dl.dropbox.com/u/540566/Screenshots/uod0w05a0vn0.png" />
+<img alt="_images/uod0w05a0vn0.png" class="last" src="_images/uod0w05a0vn0.png" />
 </section>
 <section>
 <h2>使ってみる</h2>
 <ul class="first last simple">
-<li>RopeRename .... 変数/関数/クラスをリネーム</li>
-<li>RopeMove .... 変数/関数/クラス等の移動</li>
-<li>RopeAutoImport .... import文の自動追記</li>
-<li>RopeFindImplementations .... 実装の検索</li>
-<li>RopeChangeSignature .... 関数の引数をその場で変更</li>
-<li>RopeExtractMethod .... メソッドの抽出</li>
-<li>RopeUndo/Redo ... 取り消し/やり直し</li>
+<li>RopeRename …. 変数/関数/クラスをリネーム</li>
+<li>RopeMove …. 変数/関数/クラス等の移動</li>
+<li>RopeAutoImport …. import文の自動追記</li>
+<li>RopeFindImplementations …. 実装の検索</li>
+<li>RopeChangeSignature …. 関数の引数をその場で変更</li>
+<li>RopeExtractMethod …. メソッドの抽出</li>
+<li>RopeUndo/Redo … 取り消し/やり直し</li>
 </ul>
 </section>
 <section>
@@ -798,14 +798,14 @@ print get_spam() # => "spam x 1"</code></pre>
 </section>
 <section>
 <p class="first">新しい名前を聞かれる</p>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png" src="http://dl.dropbox.com/u/540566/Screenshots/j-9unv3oul_w.png" style="width: 90%;" /></a>
+<a class="last reference internal image-reference" href="_images/j-9unv3oul_w.png"><img alt="_images/j-9unv3oul_w.png" src="_images/j-9unv3oul_w.png" style="width: 90%;" /></a>
 </section>
 <section>
 <p class="first">1を入力してプレビューを確認する。</p>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png" src="http://dl.dropbox.com/u/540566/Screenshots/0o5ex4s5a6tj.png" style="width: 90%;" /></a>
+<a class="last reference internal image-reference" href="_images/0o5ex4s5a6tj.png"><img alt="_images/0o5ex4s5a6tj.png" src="_images/0o5ex4s5a6tj.png" style="width: 90%;" /></a>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png" src="http://dl.dropbox.com/u/540566/Screenshots/c~j3fz7p~r5p.png" style="width: 60%;" /></a>
+<a class="first reference internal image-reference" href="_images/c~j3fz7p~r5p.png"><img alt="_images/c~j3fz7p~r5p.png" src="_images/c~j3fz7p~r5p.png" style="width: 60%;" /></a>
 <ul class="last simple">
 <li>diffを表示して事前に確認する事ができる</li>
 </ul>
@@ -829,11 +829,11 @@ print get_spam() # => "spam x 1"</code></pre>
 </ul>
 </section>
 <section>
-<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png" src="http://dl.dropbox.com/u/540566/Screenshots/l5a~pgwdpmqr.png" style="width: 90%;" /></a>
+<a class="first last reference internal image-reference" href="_images/l5a~pgwdpmqr.png"><img alt="_images/l5a~pgwdpmqr.png" src="_images/l5a~pgwdpmqr.png" style="width: 90%;" /></a>
 </section>
 <section>
 <p class="first">丸っと移動される。不要なimportも削除</p>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png" src="http://dl.dropbox.com/u/540566/Screenshots/gs6mkrvbgasp.png" style="width: 60%;" /></a>
+<a class="last reference internal image-reference" href="_images/gs6mkrvbgasp.png"><img alt="_images/gs6mkrvbgasp.png" src="_images/gs6mkrvbgasp.png" style="width: 60%;" /></a>
 </section>
 <section>
 <h2>RopeAutoImport</h2>
@@ -853,7 +853,7 @@ print get_spam() # => "spam x 1"</code></pre>
 </ul>
 </section>
 <section>
-<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png" src="http://dl.dropbox.com/u/540566/Screenshots/0~j00-gnd6pl.png" style="width: 90%;" /></a>
+<a class="first last reference internal image-reference" href="_images/0~j00-gnd6pl.png"><img alt="_images/0~j00-gnd6pl.png" src="_images/0~j00-gnd6pl.png" style="width: 90%;" /></a>
 </section>
 <section>
 <h2>RopeFindImplementations</h2>
@@ -892,7 +892,7 @@ class YourSpam(BaseSpam):
 </ul>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png" src="http://dl.dropbox.com/u/540566/Screenshots/k73wf7060k3a.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/k73wf7060k3a.png"><img alt="_images/k73wf7060k3a.png" src="_images/k73wf7060k3a.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>実装してある個所を見つけてくれる</li>
 </ul>
@@ -917,11 +917,11 @@ print get_spam() # => "spam x 1"</code></pre>
 </ul>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png" src="http://dl.dropbox.com/u/540566/Screenshots/heyfcc0i6den.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/heyfcc0i6den.png"><img alt="_images/heyfcc0i6den.png" src="_images/heyfcc0i6den.png" style="width: 90%;" /></a>
 <p class="last">引数にpriceを追加</p>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png" src="http://dl.dropbox.com/u/540566/Screenshots/te91r-iclefr.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/te91r-iclefr.png"><img alt="_images/te91r-iclefr.png" src="_images/te91r-iclefr.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>他の呼び出しに影響が無いように配慮してくれる</li>
 </ul>
@@ -963,20 +963,20 @@ class Customer(object):
 # 〜 省略 〜</code></pre>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png" src="http://dl.dropbox.com/u/540566/Screenshots/5l_y7j2ubcbi.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/5l_y7j2ubcbi.png"><img alt="_images/5l_y7j2ubcbi.png" src="_images/5l_y7j2ubcbi.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>抽出したい範囲を選択 -&gt; RopeExtractMethodを実行</li>
 <li>メソッド名は「_amount_for」</li>
 </ul>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png" src="http://dl.dropbox.com/u/540566/Screenshots/e7j3bh_-dhx4.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/e7j3bh_-dhx4.png"><img alt="_images/e7j3bh_-dhx4.png" src="_images/e7j3bh_-dhx4.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>if文を削除し一つのメソッド呼び出しになった</li>
 </ul>
 </section>
 <section>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png" src="http://dl.dropbox.com/u/540566/Screenshots/euo4x~bl9bzu.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/euo4x~bl9bzu.png"><img alt="_images/euo4x~bl9bzu.png" src="_images/euo4x~bl9bzu.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>文脈を呼んで、引数をよしなにしてくれるのが嬉しい</li>
 </ul>
@@ -992,13 +992,13 @@ class Customer(object):
 </section>
 <section>
 <p class="first">RopeUndo</p>
-<a class="reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png" src="http://dl.dropbox.com/u/540566/Screenshots/yv1j37mcbcte.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="_images/yv1j37mcbcte.png"><img alt="_images/yv1j37mcbcte.png" src="_images/yv1j37mcbcte.png" style="width: 70%;" /></a>
 <p>RopeRedo</p>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png" src="http://dl.dropbox.com/u/540566/Screenshots/yvtorvcga9_4.png" style="width: 70%;" /></a>
+<a class="last reference internal image-reference" href="_images/yvtorvcga9_4.png"><img alt="_images/yvtorvcga9_4.png" src="_images/yvtorvcga9_4.png" style="width: 70%;" /></a>
 </section>
 <section>
 <h2>ショートカット</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/lry-vq9fwgyq.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/lry-vq9fwgyq.png" />
+<img alt="_images/lry-vq9fwgyq.png" class="first last" src="_images/lry-vq9fwgyq.png" />
 </section>
 <section>
 <h2>Ropeについて</h2>
@@ -1030,9 +1030,9 @@ class Customer(object):
 <h2>（・ω・）いいなぁ</h2>
 </section>
 <section>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png" />
+<img alt="_images/i-~it~ub7iu9.png" class="first last" src="_images/i-~it~ub7iu9.png" />
 </section>
-<section data-background="http://dl.dropbox.com/u/540566/Screenshots/i-~it~ub7iu9.png">
+<section data-background="images/i-~it~ub7iu9.png">
 <div class="first last"><div style="font-size:35px; padding:10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
 <h2 style="color:white;">
 まだダメです！
@@ -1093,11 +1093,11 @@ print fizzbuzz(max_number=15)
 <ul class="first simple">
 <li>Radonは6段階に分けて複雑度を評価</li>
 </ul>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png" src="http://dl.dropbox.com/u/540566/Screenshots/phyq0if-1d48.png" style="width: 90%;" /></a>
+<a class="last reference internal image-reference" href="_images/phyq0if-1d48.png"><img alt="_images/phyq0if-1d48.png" src="_images/phyq0if-1d48.png" style="width: 90%;" /></a>
 </section>
 <section>
 <h2>Radon CC</h2>
-<a class="first reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png" src="http://dl.dropbox.com/u/540566/Screenshots/~7h9ti469jr7.png" style="width: 90%;" /></a>
+<a class="first reference internal image-reference" href="_images/~7h9ti469jr7.png"><img alt="_images/~7h9ti469jr7.png" src="_images/~7h9ti469jr7.png" style="width: 90%;" /></a>
 <ul class="last simple">
 <li>fizzbuzzは循環的複雑度「5」なのでA評価</li>
 <li>後一個分岐が増えたら？</li>
@@ -1121,11 +1121,11 @@ print fizzbuzz(max_number=15)
             ret.append(i)
     return ret</code></pre>
 <p>複雑度が6になるので「B」になる</p>
-<a class="last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png" src="http://dl.dropbox.com/u/540566/Screenshots/_vxdmxoq2vcj.png" style="width: 70%;" /></a>
+<a class="last reference internal image-reference" href="_images/_vxdmxoq2vcj.png"><img alt="_images/_vxdmxoq2vcj.png" src="_images/_vxdmxoq2vcj.png" style="width: 70%;" /></a>
 </section>
 <section>
 <p class="first">rand ccコマンドのオプションは色々ある</p>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/mltprc411x-b.png" src="http://dl.dropbox.com/u/540566/Screenshots/mltprc411x-b.png" />
+<img alt="_images/mltprc411x-b.png" src="_images/mltprc411x-b.png" />
 <p class="last">via <a class="reference external" href="http://qiita.com/mima_ita/items/5010aaa6808b7290d68d">http://qiita.com/mima_ita/items/5010aaa6808b7290d68d</a></p>
 </section>
 <section>
@@ -1138,7 +1138,7 @@ print fizzbuzz(max_number=15)
 </ul>
 </section>
 <section>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/d57bi3e12fnw.png" class="first" src="http://dl.dropbox.com/u/540566/Screenshots/d57bi3e12fnw.png" />
+<img alt="_images/d57bi3e12fnw.png" class="first" src="_images/d57bi3e12fnw.png" />
 <p class="last">via <a class="reference external" href="http://qiita.com/mima_ita/items/5010aaa6808b7290d68d">http://qiita.com/mima_ita/items/5010aaa6808b7290d68d</a></p>
 </section>
 <section>
@@ -1150,9 +1150,9 @@ print fizzbuzz(max_number=15)
 </ul>
 </section>
 <section>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/mu7ayogeisn0.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/mu7ayogeisn0.png" />
+<img alt="_images/mu7ayogeisn0.png" class="first last" src="_images/mu7ayogeisn0.png" />
 </section>
-<section data-background="http://dl.dropbox.com/u/540566/Screenshots/7rmin~k-pkx5.png">
+<section data-background="images/7rmin~k-pkx5.png">
 <div class="first last"><div style="font-size:35px; padding:10px; color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
 <h2 style="color:white;">
 オールA 評価
@@ -1164,7 +1164,7 @@ print fizzbuzz(max_number=15)
 <section>
 <h2>その他</h2>
 <ul class="first last simple">
-<li>Raw Metrics ... 単純な行数、コメント、空行なども表示</li>
+<li>Raw Metrics … 単純な行数、コメント、空行なども表示</li>
 <li>radon raw コマンドで取得可能</li>
 </ul>
 </section>
@@ -1191,7 +1191,7 @@ print fizzbuzz(max_number=15)
 </section>
 <section>
 <h2>vulture</h2>
-<img alt="http://dl.dropbox.com/u/540566/Screenshots/knzi4kv2s57v.png" class="first last" src="http://dl.dropbox.com/u/540566/Screenshots/knzi4kv2s57v.png" />
+<img alt="_images/knzi4kv2s57v.png" class="first last" src="_images/knzi4kv2s57v.png" />
 </section>
 <section>
 <ul class="first last simple">
@@ -1201,7 +1201,7 @@ print fizzbuzz(max_number=15)
 </ul>
 </section>
 <section>
-<a class="first last reference internal image-reference" href="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png"><img alt="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png" src="http://dl.dropbox.com/u/540566/Screenshots/lrs2ndn-uh03.png" style="width: 90%;" /></a>
+<a class="first last reference internal image-reference" href="_images/lrs2ndn-uh03.png"><img alt="_images/lrs2ndn-uh03.png" src="_images/lrs2ndn-uh03.png" style="width: 90%;" /></a>
 </section>
 <section>
 <pre class="first">
@@ -1342,7 +1342,7 @@ apps/comment/sitemaps                       26     12    54%   35-38, 41, 47-62<
     
 <script src="_static/js/jquery.min.js"></script>
 <script src="_static/lib/js/head.min.js"></script>
-<script src="_static/js/reveal.min.js"></script>
+<script src="_static/js/reveal.js"></script>
     <script>
 
       // change DOM for reveal.js
@@ -1378,21 +1378,20 @@ apps/comment/sitemaps                       26     12    54%   35-38, 41, 47-62<
         previewLinks: false,
 
         transitionSpeed: "slow",
-        backgroundTransition: "defaul",
+        backgroundTransition: "liner",
 
         slideNumber: true,
         embedded: false,
         autoSlideStoppable: true,
         hideAddressBar: true,
 
-        parallaxBackgroundImage: '',
-        parallaxBackgroundSize: '',
+        parallaxBackgroundImage: "",
+        parallaxBackgroundSize: "",
 
         focusBodyOnPageVisiblityChange: true,
 
         viewDistance: 3,
 
-        theme: Reveal.getQueryHash().theme || "serif",
         transition: Reveal.getQueryHash().transition || "linear",
 
         
