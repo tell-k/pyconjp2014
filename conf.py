@@ -107,19 +107,19 @@ html_use_index = False
 # documentation.
 html_theme_options = {
 
- "theme": "serif",
-
- # Transition style (default/cube/page/concave/zoom/linear/fade/none)
- "transition": "linear",
-
- # Transition speed (default/fast/slow)
- "transition_speed": "slow",
-
- # Transition style for full page slide backgrounds (default/linear)
- "background_transition": "liner",
-
- # Display the page number of the current slide
- "slide_number": True,
+ # "theme": "serif",
+ #
+ # # Transition style (default/cube/page/concave/zoom/linear/fade/none)
+ # "transition": "linear",
+ #
+ # # Transition speed (default/fast/slow)
+ # "transition_speed": "slow",
+ #
+ # # Transition style for full page slide backgrounds (default/linear)
+ # "background_transition": "liner",
+ #
+ # # Display the page number of the current slide
+ # "slide_number": True,
 
 }
 
