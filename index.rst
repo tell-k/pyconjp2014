@@ -19,7 +19,7 @@
 
 .. revealjs:: 誰だお前は
 
- .. image:: images/tell-k.png
+ .. image:: https://pbs.twimg.com/profile_images/775582814871752704/J1TaucBz_400x400.jpg
   :width: 200px
 
  .. raw:: html
