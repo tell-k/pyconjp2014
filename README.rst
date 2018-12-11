@@ -1,6 +1,6 @@
 PyCon JP 2014 の 発表資料 です
 
-.. images:: https://tell-k.github.io/pyconjp2014/_images/ogp.png
+.. image:: https://tell-k.github.io/pyconjp2014/_images/ogp.png
    :width: 50%
 
 * リファクタリングツールあれこれ (May the force be with you)
